@@ -16,6 +16,7 @@ RUN \
 
 RUN \
   pip install --upgrade pip && \
+  hash -r pip && \
   pip install requests && \
   pip install requests[security] && \
   pip install requests-cache && \
