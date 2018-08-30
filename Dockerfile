@@ -1,4 +1,4 @@
-FROM linuxserver/sonarr
+FROM jrottenberg/ffmpeg:4.0-vaapi
 
 RUN \
   apt-get update && \
