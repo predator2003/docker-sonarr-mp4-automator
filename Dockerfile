@@ -39,5 +39,5 @@ RUN \
 VOLUME config_mp4_automator
 
 
-CMD ["/bin/bash"]
+CMD [""]
 ENTRYPOINT ["/bin/bash"]
