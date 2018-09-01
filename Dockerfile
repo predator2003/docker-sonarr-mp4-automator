@@ -37,3 +37,5 @@ RUN \
 	/var/tmp/*
 
 VOLUME config_mp4_automator
+
+ARG        PREFIX=""
