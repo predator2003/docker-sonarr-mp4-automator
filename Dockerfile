@@ -38,4 +38,4 @@ RUN \
 
 VOLUME config_mp4_automator
 
-ARG        PREFIX=""
+ARG        PREFIX=
