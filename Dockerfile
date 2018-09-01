@@ -37,7 +37,3 @@ RUN \
 	/var/tmp/*
 
 VOLUME config_mp4_automator
-
-
-CMD [""]
-ENTRYPOINT ["/bin/bash"]
