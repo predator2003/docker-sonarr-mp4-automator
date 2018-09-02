@@ -26,15 +26,21 @@ RUN \
   pip install python-dateutil && \
   pip install qtfaststart
 
-# Copy watcher script from GIT to mp4_automator folder
-COPY mp4automator_watcher /opt/mp4_automator/mp4automator_watcher
+
 
 # Clone sickbeard_mp4_automator from GIT
 RUN \
   git clone git://github.com/mdhiggins/sickbeard_mp4_automator.git /opt/mp4_automator && \
-  touch /opt/mp4_automator/info.log && \
-  chmod a+rwx -R /opt/mp4_automator
+  touch /opt/mp4_automator/info.log
+  
 
+# Copy watcher script from GIT to mp4_automator folder
+COPY mp4automator_watcher /opt/mp4_automator/mp4automator_watcher
+
+RUN \
+    chmod a+rwx -R /opt/mp4_automator
+    
+    
 RUN \  
     rm -rf \
 	/tmp/* \
