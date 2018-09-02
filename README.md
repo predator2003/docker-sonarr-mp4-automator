@@ -9,7 +9,7 @@ docker pull streamboxx/mp4_automator_hvec
 docker run \
     --name mp4-automator_hvec_watcher \
     --restart unless-stopped \
-    --device /dev/dri:/dev/dri
+    --device /dev/dri:/dev/dri \
     -v /opt/mp4_automator/:/config \
     -v <path to data>/mp4_automator:/config_mp4_automator \
     streamboxx/mp4-automator_hvec
