@@ -66,9 +66,13 @@ ENV DOCKER_DATA /config
 ENV DOCKER_VOLUME /workdir
 VOLUME ["$DOCKER_DATA", "$DOCKER_VOLUME"]
 
+RUN /
+   wget https://raw.githubusercontent.com/mdhiggins/sickbeard_mp4_automator/master/autoProcess.ini.sample -O opt/mp4_automator/autoProcessDefault.ini
 
 ARG        PREFIX=
 
 CMD         ['tail' '-f' '/dev/null']
 # ENTRYPOINT ["/usr/bin/filebot-watcher"]
 ENTRYPOINT [""]
+
+
