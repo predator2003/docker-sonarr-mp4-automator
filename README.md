@@ -11,7 +11,6 @@ docker run \
     --restart unless-stopped \
     --device /dev/dri:/dev/dri \
     -v /opt/mp4_automator/:/config \
-    -v <path to data>/mp4_automator:/config_mp4_automator \
     streamboxx/mp4-automator_hvec
     
 
