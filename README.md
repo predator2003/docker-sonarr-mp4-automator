@@ -1,5 +1,5 @@
 # mp4-automator_hvec_watcher
-A docker container based on linuxserver/sonarr with mp4 automation baked in
+A docker container based on ############ with mp4 automation baked in
 
 ## Usage
 ````
