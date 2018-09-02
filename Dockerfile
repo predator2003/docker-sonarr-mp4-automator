@@ -49,7 +49,7 @@ RUN \
   
 # Make Symbolic Link for Config File & Workdirs  
 RUN \  
-  ln -s /downloads /data && \
+  # ln -s /downloads /data && \
   ln -s /config/autoProcessDefault.ini /opt/mp4_automator/autoProcess.ini
 
 # Install inotofy for watcher script
