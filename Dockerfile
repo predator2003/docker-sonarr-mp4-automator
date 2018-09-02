@@ -69,5 +69,5 @@ VOLUME ["$DOCKER_DATA", "$DOCKER_VOLUME"]
 
 ARG        PREFIX=
 
-CMD         ["tail -f /dev/null"]
+CMD         ['tail' '-f' '/dev/null']
 # ENTRYPOINT ["/usr/bin/filebot-watcher"]
