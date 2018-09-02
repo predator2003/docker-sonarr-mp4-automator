@@ -14,6 +14,7 @@ docker run \
     streamboxx/mp4-automator_hvec
     
 
+wget https://raw.githubusercontent.com/mdhiggins/sickbeard_mp4_automator/master/autoProcess.ini.sample -O opt/mp4_automator/autoProcessDefault.ini
 
     
     
