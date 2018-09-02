@@ -56,6 +56,9 @@ RUN \
 RUN \
   apt-get update -y && \
   apt-get install inotify-tools -y
+  
+RUN \
+   apt-get install vainfo -y
 
 ENV SETTLE_DOWN_TIME 600
   
