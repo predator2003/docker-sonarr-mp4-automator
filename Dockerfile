@@ -3,7 +3,6 @@ FROM jrottenberg/ffmpeg:4.0-vaapi
 RUN \
   apt-get update && \
   apt-get install -y \
-  ffmpeg \
   git \
   python-pip \
   openssl \
@@ -25,17 +24,44 @@ RUN \
   pip install 'subliminal<2' && \
   pip install stevedore==1.19.1 && \
   pip install python-dateutil && \
-  pip install qtfaststart && \
-  git clone git://github.com/mdhiggins/sickbeard_mp4_automator.git /sickbeard_mp4_automator/ && \
-  touch /sickbeard_mp4_automator/info.log && \
-  chmod a+rwx -R /sickbeard_mp4_automator && \
-  ln -s /downloads /data && \
-  ln -s /config_mp4_automator/autoProcess.ini /sickbeard_mp4_automator/autoProcess.ini && \
-  rm -rf \
+  pip install qtfaststart
+
+# Copy watcher script from GIT to mp4_automator folder
+COPY mp4automator_watcher /opt/mp4_automator/mp4automator_watcher
+
+# Clone sickbeard_mp4_automator from GIT
+RUN \
+  git clone git://github.com/mdhiggins/sickbeard_mp4_automator.git /opt/mp4_automator && \
+  touch /opt/mp4_automator/info.log && \
+  chmod a+rwx -R /opt/mp4_automator
+
+RUN \  
+    rm -rf \
 	/tmp/* \
 	/var/lib/apt/lists/* \
 	/var/tmp/*
+  
+# Make Symbolic Link for Config File & Workdirs  
+RUN \  
+  ln -s /downloads /data && \
+  ln -s /config/autoProcessDefault.ini /opt/mp4_automator/autoProcess.ini
 
-VOLUME config_mp4_automator
+# Install inotofy for watcher script
+RUN \
+  apt-get update -y && \
+  apt-get install inotify-tools -y
+
+ENV SETTLE_DOWN_TIME 600
+  
+
+WORKDIR     /opt/mp4_automator
+
+ENV DOCKER_DATA /config
+ENV DOCKER_VOLUME /workdir
+VOLUME ["$DOCKER_DATA", "$DOCKER_VOLUME"]
+
 
 ARG        PREFIX=
+
+CMD         ["tail -f /dev/null"]
+# ENTRYPOINT ["/usr/bin/filebot-watcher"]
