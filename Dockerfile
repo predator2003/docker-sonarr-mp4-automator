@@ -76,5 +76,5 @@ ARG        PREFIX=
 # CMD         ['tail' '-f' '/dev/null']
 # ENTRYPOINT ["/usr/bin/filebot-watcher"]
 ENTRYPOINT ["/opt/mp4_automator/mp4automator_watcher"]
-
+CMD         ["/input/]
 
