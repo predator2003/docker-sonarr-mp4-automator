@@ -73,8 +73,8 @@ VOLUME ["$DOCKER_CONFIG", "$DOCKER_INPUT, "$DOCKER_OUTPUT"
 
 ARG        PREFIX=
 
-CMD         ['tail' '-f' '/dev/null']
+# CMD         ['tail' '-f' '/dev/null']
 # ENTRYPOINT ["/usr/bin/filebot-watcher"]
-ENTRYPOINT [""]
+ENTRYPOINT ["/opt/mp4_automator/mp4automator_watcher"]
 
 
