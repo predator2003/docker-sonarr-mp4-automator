@@ -12,6 +12,11 @@ RUN \
   libxml2-dev \
   libxslt1-dev \
   zlib1g-dev
+  
+RUN \
+   add-apt-repository ppa:ruediger-c-plusplus/vobsub2srt -y && \
+   apt-get update -y && \
+   apt-get install -y vobsub2srt && \
 
 RUN \
   pip install --upgrade pip && \
@@ -25,8 +30,6 @@ RUN \
   pip install stevedore==1.19.1 && \
   pip install python-dateutil && \
   pip install qtfaststart
-
-
 
 # Clone sickbeard_mp4_automator from GIT
 RUN \
