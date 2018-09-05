@@ -25,7 +25,8 @@ RUN \
    ./bootstrap && \
    ./configure CXXFLAGS=-std=gnu++11 && \
    make && \
-   make install
+   make install && \
+   rm -r /make_vobsub2srt
 
 RUN \
   pip install --upgrade pip && \
