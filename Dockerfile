@@ -13,11 +13,19 @@ RUN \
   libxslt1-dev \
   zlib1g-dev \
   i965-va-driver
-  
+
+#VOBSUB Converter
 RUN \
-   add-apt-repository ppa:ruediger-c-plusplus/vobsub2srt -y && \
-   apt-get update -y && \
-   apt-get install -y vobsub2srt && \
+   apt-get install -y libtiff5-dev libtesseract-dev tesseract-ocr-eng build-essential cmake pkg-config bash-completion && \
+   git clone http://github.com/ruediger/VobSub2SRT /make_vobsub2srt && \
+   cd /make_vobsub2srt && \
+   apt-get install -y autotools-dev && \
+   apt-get install -y automake && \
+   git checkout autotools && \
+   ./bootstrap && \
+   ./configure CXXFLAGS=-std=gnu++11 && \
+   make && \
+   make install
 
 RUN \
   pip install --upgrade pip && \
