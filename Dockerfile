@@ -11,7 +11,8 @@ RUN \
   libssl-dev \
   libxml2-dev \
   libxslt1-dev \
-  zlib1g-dev
+  zlib1g-dev \
+  i965-va-driver
   
 RUN \
    add-apt-repository ppa:ruediger-c-plusplus/vobsub2srt -y && \
