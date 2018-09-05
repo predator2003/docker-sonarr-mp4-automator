@@ -27,6 +27,12 @@ RUN \
    make && \
    make install && \
    rm -r /make_vobsub2srt
+   
+   
+RUN \
+   git clone https://github.com/tesseract-ocr/tessdata/ /usr/share/tesseract-ocr/4.00/tessdata/temp/ && \
+   cp /usr/share/tesseract-ocr/4.00/tessdata/temp/*.traineddata /usr/share/tesseract-ocr/4.00/tessdata/ && \
+   rm -r /usr/share/tesseract-ocr/4.00/tessdata/temp/
 
 RUN \
   pip install --upgrade pip && \
