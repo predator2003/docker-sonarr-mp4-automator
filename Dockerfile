@@ -1,8 +1,9 @@
-FROM jrottenberg/ffmpeg:4.0-vaapi
+FROM jrottenberg/ffmpeg:4.1-vaapi
 
 RUN \
   apt-get update && \
   apt-get install -y \
+  apt-utils \
   git \
   python-pip \
   openssl \
@@ -17,7 +18,7 @@ RUN \
 #VOBSUB Converter
 RUN \
    apt-get install -y libtiff5-dev libtesseract-dev tesseract-ocr-eng build-essential cmake pkg-config bash-completion && \
-   git clone http://github.com/ruediger/VobSub2SRT /make_vobsub2srt && \
+   git clone https://github.com/ruediger/VobSub2SRT/ /make_vobsub2srt && \
    cd /make_vobsub2srt && \
    apt-get install -y autotools-dev && \
    apt-get install -y automake && \
@@ -57,7 +58,8 @@ RUN \
 COPY mp4automator_watcher /opt/mp4_automator/mp4automator_watcher
 
 RUN \
-    chmod a+rwx -R /opt/mp4_automator
+    chmod a+rwx -R /opt/mp4_automator \
+    locale-gen en_US en_US.UTF-8
     
     
 RUN \  
@@ -79,6 +81,8 @@ RUN \
 RUN \
    apt-get install vainfo -y
 
+
+
 ENV SETTLE_DOWN_TIME 600
   
 
@@ -87,7 +91,10 @@ WORKDIR     /opt/mp4_automator
 ENV DOCKER_CONFIG /config
 ENV DOCKER_INPUT /input
 ENV DOCKER_OUTPUT /output
+ENV LANGUAGE en_US.UTF-8
+ENV LANG en_US.UTF-8
 VOLUME ["$DOCKER_CONFIG", "$DOCKER_INPUT", "$DOCKER_OUTPUT"]
+
 
 
 ARG        PREFIX=
